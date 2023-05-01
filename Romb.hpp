@@ -3,14 +3,14 @@
 #define RBck "Какую сторону хотите поменять?\n1: Стороны = %g\n2: Угол = %g (градусы)\n0: Никакую\n"
 #define RBfk "Угол не может быть равен 0\n"
 
-template <typename qb>
+template <typename Type>
 class Romb:
-public Quadrangle<qb> {
+public Quadrangle<Type> {
     private:
-        qb ang;
+        Type ang;
     public:
         Romb();
-        Romb(qb side, qb angle) : Quadrangle<qb>() {
+        Romb(Type side, Type angle) : Quadrangle<Type>() {
             if (side>0){
                 if (angle){
                     this->a = side; this->c = side; this->b = side; this->d = side;
@@ -25,11 +25,11 @@ public Quadrangle<qb> {
         ~Romb(){
             printf(RBdk);
         }
-        void set(qb side=0, qb angle=0){
+        void set(Type side=0, Type angle=0){
             Start: if (side>0){
                 if (angle) {
                     this->a = side; this->c = side; this->b = side; this->d = side;
-                    this->ang = deg2rad(angle); printf(RBok, this->a, this->ang); exit (0);
+                    this->ang = angle; printf(RBok, this->a, this->ang); exit (0);
                 } else {
                     printf(RBfk);
                 }
@@ -38,7 +38,7 @@ public Quadrangle<qb> {
             std::cin >> side >> ang; goto Start;
         }
         void change(){
-            int opt = -1; qb i;
+            int opt = -1; Type i;
             do {
                 switch (opt){
                     case 1:
@@ -51,19 +51,19 @@ public Quadrangle<qb> {
                         printf(nv, "угла (в градусах)");
                         std::cin >> i;
                         if (i > 0){
-                            opt = -1; this->a = deg2rad(this->a);
+                            opt = -1; this->a = i;
                         } else printf(nk); break;
                     default:
-                        printf(RBck, this->a, this->b, this->c, this->d);
+                        printf(RBck, this->a, this->ang);
                         std::cin >> opt; break;
                 }
             } while (opt);
         }
         void show(){
-            printf("Ромб со сторонами %g и углом %g \n", this->a, rad2deg(this->ang));
+            printf("Ромб со сторонами %g и углом %g \n", this->a, this->ang);
         }
         double square(){
-            return (this->a*sin(ang)*this->a*cos(this->ang))/2;
+            return (this->a*sin(deg2rad(this->ang))*this->a*cos(deg2rad(this->ang)))/2;
         }
         double perimetr(){
             return (this->a*4);

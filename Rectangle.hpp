@@ -4,14 +4,14 @@
 
 #define rt(a, b) (a>0 && b>0) ? 1 : 0
 
-template <typename qb>
+template <typename Type>
 class Rectangle:
-public Quadrangle<qb> {
+public Quadrangle<Type> {
     public:
         Rectangle();
-        Rectangle(qb width, qb height) : Quadrangle<qb>() {
+        Rectangle(Type width, Type height) : Quadrangle<Type>() {
             if (rt(width, height)){
-                this->a = height; this->c = width; this->b = height; this->d = width;
+                this->a = height; this->b = width; this->c = height; this->d = width;
                 printf(Rok, this->b, this->a);
             } else {
                 printf(nk); set();
@@ -20,16 +20,16 @@ public Quadrangle<qb> {
         ~Rectangle(){
             printf(Rdk, this->b, this->a);
         }
-        void set(qb width=0, qb height=0){
+        void set(Type width=0, Type height=0){
             Start: if (rt(width, height)){
                 this->a = height; this->b = width; this->c = height; this->d = width;
-                printf(Rok, height, width); return;
+                printf(Rok, width, height); return;
             }
             printf("Введите длину и ширину прямоугольника:\n");
             std::cin >> width >> height; goto Start;
         }
         void change(){
-            int opt = -1; qb i;
+            int opt = -1; Type i;
             do {
                 switch (opt){
                     case 1:

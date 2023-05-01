@@ -2,23 +2,23 @@
 #define Sdk "Квадрат со стороной %g удалён\n"
 #define Sck "Какую сторону хотите поменять?\n1: Стороны = %g\n0: Никакую\n"
 
-template <typename qb>
+template <typename Type>
 class Square:
-public Quadrangle<qb> {
+public Quadrangle<Type> {
     public:
         Square();
-        Square(qb side) : Quadrangle<qb>() {
+        Square(Type side) : Quadrangle<Type>() {
             if (side>0){
                 this->a = side; this->c = side; this->b = side; this->d = side;
-                printf(Sok);
+                printf(Sok, side);
             } else {
                 printf(nk); set();
             }
         }
         ~Square(){
-            printf(dk);
+            printf(Sdk, this->a);
         }
-        void set(qb side=0){
+        void set(Type side=0){
             Start: if (side>0){
                 this->a = side; this->c = side; this->b = side; this->d = side;
                 printf(Sok, this->a); return;
@@ -27,7 +27,7 @@ public Quadrangle<qb> {
             std::cin >> side; goto Start;
         }
         void change(){
-            int opt = -1; qb i;
+            int opt = -1; Type i;
             do {
                 switch (opt){
                     case 1:

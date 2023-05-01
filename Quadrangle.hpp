@@ -11,18 +11,15 @@
 #define nv "Введите новое значение для %s: "
 #define ak "Площадь четырёхугольника варируется от значения его углов, в вывод идёт 0, учитывайте это\n"
 
-#include "Rectangle.hpp"
-#include "Romb.hpp"
-#include "Square.hpp"
-#include "Trapez.hpp"
-
-template <typename qb>
+template <typename Type>
 class Quadrangle {
     protected:
-        qb a, b, c, d;
+        Type a, b, c, d;
     public:
-        Quadrangle();
-        Quadrangle(qb a, qb b, qb c, qb d){
+        Quadrangle(){
+            return;
+        };
+        Quadrangle(Type a, Type b, Type c, Type d){
             if (pl(a, b, c, d)){
                 if (rl(a, b, c, d)){
                     this->a = a; this->b = b; this->c = c; this->d = d;
@@ -35,9 +32,10 @@ class Quadrangle {
             }
         }
         ~Quadrangle(){
-            printf(dk, a, b, c, d);
+            //printf(dk, a, b, c, d);
+            return;
         }
-        void set(qb a=0, qb b=0, qb c=0, qb d=0){
+        void set(Type a=0, Type b=0, Type c=0, Type d=0){
             Start: if (pl(a, b, c, d)){
                 if (rl(a, b, c, d)){
                     this->a = a; this->b = b; this->c = c; this->d = d;
@@ -50,17 +48,17 @@ class Quadrangle {
 
             goto Start;
         }
-        void get(qb *a=NULL, qb *b=NULL, qb *c=NULL, qb *d=NULL){
+        void get(Type *a=NULL, Type *b=NULL, Type *c=NULL, Type *d=NULL){
             if (a != NULL) *a = this->a;
             if (b != NULL) *b = this->b;
             if (c != NULL) *c = this->c;
             if (d != NULL) *d = this->d;
         }
-        virtual void show(){
-            printf("Стороны четырёхугольника: %g %g %g %g", a, b, c, d);
+        void show(){
+            printf("Стороны четырёхугольника: %g %g %g %g\n", this->a, this->b, this->c, this->d);
         }
         void change(){
-            int opt = -1; qb i;
+            int opt = -1; Type i;
             do {
                 switch (opt){
                     case 1:
@@ -101,9 +99,9 @@ class Quadrangle {
                 }
             } while (opt);
         }
-        virtual double perimetr(){
+        double perimetr(){
             return (a+b+c+d);}
-        virtual double square(){
+        double square(){
             printf(ak);
             return (0);}
 };

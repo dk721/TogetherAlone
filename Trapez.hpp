@@ -5,12 +5,12 @@
 #define Trl(a, b, c) (a < b+c*2 && b < a+c*2) ? 1 : 0
 #define Tpl(a, b, c) (a>0 && b>0 && c>0) ? 1 : 0
 
-template <typename qb>
+template <typename Type>
 class Trapez:
-public Quadrangle<qb> {
+public Quadrangle<Type> {
     public:
         Trapez();
-        Trapez(qb down, qb up, qb side) : Quadrangle<qb>() {
+        Trapez(Type down, Type up, Type side) : Quadrangle<Type>() {
             if (Tpl(down, up, side)){
                 if (Trl(down, up, side)){
                     this->a = side; this->b = down; this->c = side; this->d = up;
@@ -25,7 +25,7 @@ public Quadrangle<qb> {
         ~Trapez(){
             printf(Tdk, this->b, this->d, this->a);
         }
-        void set(qb down=0, qb up=0, qb side=0){
+        void set(Type down=0, Type up=0, Type side=0){
             Start: if (Tpl(down, up, side)){
                 if (Trl(down, up, side)){
                     this->a = side; this->b = down; this->c = side; this->d = up;
@@ -39,7 +39,7 @@ public Quadrangle<qb> {
             goto Start;
         }
         void change(){
-            int opt = -1; qb i;
+            int opt = -1; Type i;
             do {
                 switch (opt){
                     case 1:
@@ -76,7 +76,7 @@ public Quadrangle<qb> {
             printf("Трапеция с нижним основанием %g верхним основанием %g и боковыми сторонами %g \n", this->b, this->d, this->a);
         }
         double angle(){
-            return acos((abs(this->b-this->d)/2)/this->a);
+            return (acos((abs(this->b-this->d)/2)/this->a))/M_PI*180;
         }
         double square(){
             return sin(angle())*this->a*((this->b+this->d)/2);
@@ -84,8 +84,4 @@ public Quadrangle<qb> {
         double perimetr(){
             return (this->a*2 + this->b + this->d);
         }
-        double osn(){
-            return acos(abs(this->b-this->d)/2/this->a);
-        }
-
 };
