@@ -35,7 +35,7 @@ public Quadrangle<qb> {
                 }
             }
             printf("Введите сторону ромба и угол (в градусах):\n");
-            scanf("%lf %lf", &side, &ang); goto Start;
+            std::cin >> side >> ang; goto Start;
         }
         void change(){
             int opt = -1; qb i;
@@ -45,17 +45,17 @@ public Quadrangle<qb> {
                         printf(nv, "стороны");
                         std::cin >> i;
                         if (i > 0){
-                                opt = -1; this->a = i; this->c = i; this->b = i; this->d = i;
+                            opt = -1; this->a = i; this->c = i; this->b = i; this->d = i;
                         } else printf(nk); break;
                     case 2:
                         printf(nv, "угла (в градусах)");
                         std::cin >> i;
                         if (i > 0){
-                                opt = -1; this->a = deg2rad(this->a);
+                            opt = -1; this->a = deg2rad(this->a);
                         } else printf(nk); break;
                     default:
                         printf(RBck, this->a, this->b, this->c, this->d);
-                        scanf("%d", &opt); break;
+                        std::cin >> opt; break;
                 }
             } while (opt);
         }

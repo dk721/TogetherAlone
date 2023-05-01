@@ -24,7 +24,7 @@ public Quadrangle<qb> {
                 printf(Sok, this->a); return;
             }
             printf("Введите сторону квадрата:\n");
-            scanf("%lf", &side); goto Start;
+            std::cin >> side; goto Start;
         }
         void change(){
             int opt = -1; qb i;
@@ -38,7 +38,7 @@ public Quadrangle<qb> {
                         } else printf(nk); break;
                     default:
                         printf(Sck, this->a, this->b, this->c, this->d);
-                        scanf("%d", &opt); break;
+                        std::cin >> opt; break;
                 }
             } while (opt);
         }

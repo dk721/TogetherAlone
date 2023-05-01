@@ -35,7 +35,7 @@ public Quadrangle<qb> {
                 }
             }
             printf("Введите нижнее основание, верхнее основание и боквую сторону:\n");
-            scanf("%lf %lf %lf", &down, &up, &side);
+            std::cin >> down >> up >> side;
             goto Start;
         }
         void change(){
@@ -68,7 +68,7 @@ public Quadrangle<qb> {
                         } else printf(nk); break;
                     default:
                         printf(Tck, this->b, this->d, this->a);
-                        scanf("%d", &opt); break;
+                        std::cin >> opt; break;
                 }
             } while (opt);
         }

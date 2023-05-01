@@ -46,7 +46,7 @@ class Quadrangle {
                     printf(ik);
                 }}
             printf("Введите стороны четырёхугольника:\n");
-            scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+            std::cin >> a >> b >> c >> d;
 
             goto Start;
         }
@@ -97,7 +97,7 @@ class Quadrangle {
                         } else printf(nk); break;
                     default:
                         printf(ck, a, b, c, d);
-                        scanf("%d", &opt); break;
+                        std::cin >> opt; break;
                 }
             } while (opt);
         }

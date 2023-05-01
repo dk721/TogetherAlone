@@ -26,7 +26,7 @@ public Quadrangle<qb> {
                 printf(Rok, height, width); return;
             }
             printf("Введите длину и ширину прямоугольника:\n");
-            scanf("%lf %lf", &width, &height); goto Start;
+            std::cin >> width >> height; goto Start;
         }
         void change(){
             int opt = -1; qb i;
