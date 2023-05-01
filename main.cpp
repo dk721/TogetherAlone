@@ -4,10 +4,6 @@
 #include <iostream>
 
 #include "Quadrangle.hpp"
-#include "Rectangle.hpp"
-#include "Romb.hpp"
-#include "Square.hpp"
-#include "Trapez.hpp"
 
 #define creat "Вы хотите создать \n1: Четырёхугольник \n2: Прямоугольник \n3:\
 Ромб \n4: Квадрат \n5: Равнобокую трапечию \n0: Я передумал\n"
@@ -27,6 +23,7 @@
 
 using namespace std;
 int main() {
+    Quadrangle<int> a(2,2,2,2);
     printf(prd);
     int run = 1, opt = -1, todo = -1;
     Quadrangle<double> *qe; Rectangle<double>  *re;
@@ -39,20 +36,33 @@ int main() {
                         double a, b, c, d;
                         cout << "Введите стороны четырёхугольника:\n";
                         cin >> a >> b >> c >> d;
-                        qe = new Quadrangle<double>(a, b, c, d);
+                        Quadrangle<double> tmp(a, b, c, d); qe = &tmp;
                     } else cout << "Фигура уже существует\n";
-                    break;
+                    todo = -1; break;
                 case 2:
+                    todo = -1; 
                     if (qe != NULL) delete[] qe;
                     else cout << "Фигуры не существует, нечего удалять\n";
                     break;
                 case 4:
+                    todo = -1; 
+                    if (qe == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     qe->change(); break;
                 case 3:
+                    todo = -1; 
+                    if (qe == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     qe->show(); break;
                 case 5:
+                    todo = -1; 
+                    if (qe == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Площадь фигуры: " << qe->square() << endl; break;
                 case 6:
+                    todo = -1; 
+                    if (qe == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Периметр фигуры: " << qe->perimetr() << endl; break;
                 default:
                     cout << sel << sel1 << sel2 << sel3 << sel4 << sel5 << sel6 << sel0;
@@ -61,25 +71,42 @@ int main() {
         case 2:
             switch (todo){
                 case 1:
+                    todo = -1; 
                     if (re == NULL) {
                         double a, b;
                         cout << "Введите длину и ширину проямоугольника:\n";
-                        re = new Rectangle<double>(a, b);
+                        Rectangle<double> tmp(a, b); re = &tmp;
                     } else cout << "Фигура уже существует\n";
                     break;
                 case 2:
+                    todo = -1; 
                     if (re != NULL) delete[] re;
                     else cout << "Фигуры не существует, нечего удалять\n";
                     break;
                 case 3:
+                    todo = -1; 
+                    if (re == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     re->show(); break;
                 case 4:
+                    todo = -1; 
+                    if (re == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     re->change(); break;
                 case 5:
+                    todo = -1; 
+                    if (re == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Площадь фигуры: " << re->square() << endl; break;
                 case 6:
+                    todo = -1; 
+                    if (re == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Периметр фигуры: " << re->perimetr() << endl; break;
                 case 7:
+                    todo = -1; 
+                    if (re == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Радиус описанной окружности: " << re->op_rad() << endl; break;
                 default:
                     cout << sel << sel1 << sel2 << sel3 << sel4 << sel5 << sel6 << sel7 << sel0;
@@ -88,25 +115,39 @@ int main() {
         case 3:
             switch (todo){
                 case 1:
+                    todo = -1; 
                     if (rb == NULL) {
                         double a, b;
                         cout << "Введите сторону и угол\n";
                         cin >> a >> b;
-                        rb = new Romb<double>(a, b); 
+                        Romb<double> tmp(a, b); rb = &tmp;
                     }
                     else cout << "Фигура уже существует\n";
                     break;
                 case 2:
+                    todo = -1; 
                     if (rb != NULL) delete[] rb;
                     else cout << "Фигуры не существует, нечего удалять\n";
                     break;
                 case 3:
+                    todo = -1; 
+                    if (rb == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     rb->show(); break;
                 case 4:
+                    todo = -1; 
+                    if (rb == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     rb->change(); break;
                 case 5:
+                    todo = -1; 
+                    if (rb == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Площадь фигуры: " << rb->square() << endl; break;
                 case 6:
+                    todo = -1; 
+                    if (rb == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Периметр фигуры: " << rb->perimetr() << endl; break;
                 default:
                     cout << sel << sel1 << sel2 << sel3 << sel4 << sel5 << sel6 << sel0;
@@ -115,28 +156,48 @@ int main() {
         case 4:
             switch (todo){
                 case 1:
+                    todo = -1; 
                     if (se == NULL) {
                         double a;
                         cout << "Введите сторону:\n";
                         cin >> a;
-                        se = new Square<double>(a);
+                        Square<double> tmp(a); se = &tmp;
                     } else cout << "Фигура уже существует\n";
                     break;
                 case 2:
+                    todo = -1; 
                     if (se != NULL) delete[] se;
                     else cout << "Фигуры не существует, нечего удалять\n";
                     break;
                 case 3:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     se->show(); break;
                 case 4:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     se->change(); break;
                 case 5:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Площадь фигуры: " << se->square() << endl; break;
                 case 6:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Периметр фигуры: " << se->perimetr() << endl; break;
                 case 7:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Радиус описанной окружности: " << se->op_rad() << endl; break;
                 case 8:
+                    todo = -1; 
+                    if (se == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Радиус вписанной окружности: " << se->vp_rad() << endl; break;
                 default:
                     cout << sel << sel1 << sel2 << sel3 << sel4 << sel5 << sel6 << sel7 << sel8 << sel0;
@@ -145,28 +206,47 @@ int main() {
         case 5:
             switch (todo){
                 case 1:
+                    todo = -1; 
                     if (tz == NULL) {
                         double a, b, c;
                         cout << "Введите нижнее основание, верхнее основание и боковую сторону:\n";
                         cin >> a >> b >> c;
-                        tz = new Trapez<double>(a, b, c);
+                        Trapez<double> tmp(a, b, c); tz = &tmp;
                     } else cout << "Фигура уже существует\n";
                     break;
                 case 2:
+                    todo = -1; 
                     if (tz != NULL) delete[] tz;
                     else cout << "Фигуры не существует, нечего удалять\n";
                     break;
                 case 3:
-                    se->show(); break;
+                    todo = -1; 
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
+                    tz->show(); break;
                 case 4:
-                    se->change(); break;
+                    todo = -1; 
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
+                    tz->change(); break;
                 case 5:
+                    todo = -1; 
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Площадь фигуры: " << tz->square() << endl; break;
                 case 6:
+                    todo = -1; 
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Периметр фигуры: " << tz->perimetr() << endl; break;
                 case 7:
+                    todo = -1; 
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << "Угол при основании: " << tz->osn() << "" << endl; break;
                 default:
+                    if (tz == NULL) {
+                        cout << "Сначала создайте фигуру\n"; break;}
                     cout << sel << sel1 << sel2 << sel3 << sel4 << sel5 << sel6 << selosn << sel0;
                     opt = -1; break;
             }

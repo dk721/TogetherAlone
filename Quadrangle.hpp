@@ -1,21 +1,20 @@
-#pragma once
-
 #define deg2rad(a) (1==1) ? (a/M_PI*180) : (a/M_PI*180)
 #define rad2deg(a) (1==1) ? (a*M_PI/180) : (a/M_PI*180)
-
 #define rl(a, b, c, d) (a < b+c+d && b < a+c+d && c < a+b+d && d < a+b+c) ? 1 : 0
 #define pl(a, b, c, d) (a>0 && b>0 && c>0 && d>0) ? 1 : 0
 
 #define ok "Четырёхугольник со сторонами %g %g %g %g установлен\n"
 #define dk "Четырёхугольник со сторонами %g %g %g %g удалён\n"
-
 #define nk "Сторона не может быть меньше или равной 0\n"
 #define ik "Одна сторона не может быть больше суммы остальных\n"
-
 #define ck "Какую сторону хотите поменять?\n1: a = %g\n2: b = %g\n3: c = %g\n4: d = %g\n0: Никакую\n"
 #define nv "Введите новое значение для %s: "
-
 #define ak "Площадь четырёхугольника варируется от значения его углов, в вывод идёт 0, учитывайте это\n"
+
+#include "Rectangle.hpp"
+#include "Romb.hpp"
+#include "Square.hpp"
+#include "Trapez.hpp"
 
 template <typename qb>
 class Quadrangle {
