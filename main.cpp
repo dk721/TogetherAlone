@@ -3,11 +3,11 @@
 #include <string>
 #include <iostream>
 
-#include "Quadrangle.h"
-#include "Rectangle.h"
-#include "Romb.h"
-#include "Square.h"
-#include "Trapez.h"
+#include "Quadrangle.hpp"
+#include "Rectangle.hpp"
+#include "Romb.hpp"
+#include "Square.hpp"
+#include "Trapez.hpp"
 
 #define creat "Вы хотите создать \n1: Четырёхугольник \n2: Прямоугольник \n3:\
 Ромб \n4: Квадрат \n5: Равнобокую трапечию \n0: Я передумал\n"
